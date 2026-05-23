@@ -4,5 +4,6 @@
 int main()
 {
 	printf("kagura\n");
+	printf("tiranta\n");
 	return 0;
 }

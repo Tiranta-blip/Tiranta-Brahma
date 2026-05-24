@@ -86,7 +86,7 @@ void Initparticle()
 
 	for (int i = 0; i<N; ++i)
 	{
-		radius = GetRandomValue(5,5);
+		radius = GetRandomValue(45,50);
 		p[i].r = radius;
 		p[i].x = GetRandomValue(radius,W-radius);
 		p[i].y = GetRandomValue(radius,H-radius);
@@ -131,7 +131,19 @@ void logic()
 
 			if (collide)
 			{
-				printf("kagura\n");
+				float dx = (p1.x - p2.x);
+				float dy = (p1.y - p2.y);
+
+				float abs_d = sqrt(pow(dx,2) + pow(dy,2));
+
+				float nx = dx/abs_d;
+				float ny = dy/abs_d;
+
+				float overlap = p2.r + p1.r - abs_d;
+				p[i].x += nx *overlap/2;
+				p[i].y += ny * overlap/2;
+				p[i].x += -ny * overlap/2;
+				p[j].y += -ny *overlap/2;
 			}
 		}
 	}
